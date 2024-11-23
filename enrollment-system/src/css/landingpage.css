@@ -200,7 +200,7 @@ section.home{
     flex-direction: column; /* Arrange content vertically */
     justify-content: center; /* Center content vertically */
     align-items: center; /* Center content horizontally */
-	background-image: url(src/assets/images/cvsu-img1.jpg); /* Add background picture */
+	
     background-size: cover; /* Ensure the image covers the div */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent the image from repeating */

@@ -1,14 +1,13 @@
 import React from 'react';
-import logo from '../assets/images/cvsu-logo.png'; 
-
+import logo from '../assets/images/cvsu-logo.png';
+import backgroundImage from '../assets/images/cvsu-img1.jpg'; // Import background image
 
 const Home = () => {
   return (
     <section className="home" id="home">
       <nav className="main-navbar">
         <a href="#" className="logo">
-
-        <img src={logo} alt="CVSU Logo" /> 
+          <img src={logo} alt="CVSU Logo" />
         </a>
         <ul className="nav-list">
           <li><a href="#home">Home</a></li>
@@ -26,13 +25,15 @@ const Home = () => {
         </div>
       </nav>
 
-      <div className="home banner">
+      {/* Apply the background image as inline style */}
+      <div
+        className="home banner"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}
+      >
         <div className="banner-desc">
-          {/* <h2>Cavite State University - Bacoor Campus</h2>
-          <p>Lorem ipsum dolor sit amet...</p>
-          <a href="#" className="get-started-btn-container">
-            <button className="get-started-btn btn">Enroll Now</button>
-          </a> */}
+          {/* Add content here */}
         </div>
       </div>
     </section>
