@@ -1,5 +1,4 @@
 import React from 'react';
-
 import cvsuLogo from '../assets/images/cvsu-logo.png';
 
 const Footer = () => {
@@ -8,14 +7,15 @@ const Footer = () => {
       <div className="footer-contents">
         <div className="footer-col footer-col-1">
           <div className="col-title">
-          <img src={cvsuLogo} alt="CVSU Logo" />
+            <img src={cvsuLogo} alt="CVSU Logo" />
           </div>
           <div className="col-contents">
-            <p>Cavite State University - Bacoor Campus was created on September 28, 2007, 
+            <p>
+              Cavite State University - Bacoor Campus was created on September 28, 2007, 
               through Board Resolution No. 62, series of 2007. It is one of the campuses of 
               Cavite State University (CVSU), an institution of learning that started out
-               in 1906 as the Indang Intermediate School.</p>
-
+               in 1906 as the Indang Intermediate School.
+            </p>
           </div>
         </div>
 
@@ -31,14 +31,14 @@ const Footer = () => {
             <div className="contact-row">
               <span>Phone</span>
               <a href="tel:+63464765029" className="contact-link">
-              (046) 476-5029
-            </a>
+                (046) 476-5029
+              </a>
             </div>
             <div className="contact-row">
               <span>Email</span>
               <a href="mailto:cvsubacoor@cvsu.edu.ph" className="contact-link">
-              cvsubacoor@cvsu.edu.ph
-            </a>
+                cvsubacoor@cvsu.edu.ph
+              </a>
             </div>
           </div>
         </div>
@@ -56,8 +56,6 @@ const Footer = () => {
             <a href="#contact">Contact</a>
           </div>
         </div>
-
-    
       </div>
 
       <div className="copy-rights">
