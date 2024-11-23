@@ -82,7 +82,7 @@ section.home{
 	background-color: var(--primary-light-clr);
 }
 .home .main-navbar{
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	max-width: 1400px;
 	height: 12vh;
@@ -114,7 +114,7 @@ section.home{
 	text-decoration: none;
 }
 .main-navbar .logo img{
-	width: 120px;
+	width: auto;
 	height: auto;
 }
 .main-navbar .nav-list{
@@ -200,7 +200,7 @@ section.home{
     flex-direction: column; /* Arrange content vertically */
     justify-content: center; /* Center content vertically */
     align-items: center; /* Center content horizontally */
-	background-image: url(images/home/cvsu-img1.jpg); /* Add background picture */
+	background-image: url(src/assets/images/cvsu-img1.jpg); /* Add background picture */
     background-size: cover; /* Ensure the image covers the div */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent the image from repeating */
@@ -639,6 +639,13 @@ section.footer{
 	align-items: flex-end;
 	margin-bottom: 30px;
 }
+
+.contact-link {
+	text-decoration: none; /* Remove underline */
+	color: var(--light-text-clr); /* Inherit the color from the parent element */
+  }
+  
+
 .footer-col .col-title h3{
 	font-size: 24px;
 	color: var(--light-heading-clr);
@@ -656,6 +663,7 @@ section.footer{
 	line-height: 1.3;
 	margin-bottom: 15px;
 }
+
 .footer-col-2 .col-contents .contact-row{
 	margin-bottom: 15px;
 	display: flex;

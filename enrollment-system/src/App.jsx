@@ -8,6 +8,8 @@ import Footer from './components/Footer';
 
 import './css/landingpage.css';
 
+import './js/script.jsx';
+
 
 import './App.css'
 

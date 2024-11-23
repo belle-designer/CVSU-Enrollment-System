@@ -1,11 +1,14 @@
 import React from 'react';
+import logo from '../assets/images/cvsu-logo.png'; 
+
 
 const Home = () => {
   return (
     <section className="home" id="home">
       <nav className="main-navbar">
         <a href="#" className="logo">
-          {/* <img src="images/home/cvsu-logo.png" alt="Logo" /> */}
+
+        <img src={logo} alt="CVSU Logo" /> 
         </a>
         <ul className="nav-list">
           <li><a href="#home">Home</a></li>

@@ -1,34 +1,72 @@
-// Script File
+import React, { useState, useEffect } from 'react';
 
-// Home Section Starts
-var menuBtn = document.querySelector('.main-navbar .menu-btn');
-var menuList = document.querySelector('.main-navbar .nav-list');
-var menuListItems = document.querySelectorAll('.nav-list li a');
+const Home = () => {
+  // State for toggling the hamburger menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isHomeActive, setIsHomeActive] = useState(false);
 
-menuBtn.addEventListener('click', function(){
-	menuBtn.classList.toggle('active');
-	menuList.classList.toggle('active');
-});
+  // Function to toggle the menu
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
-for(var i = 0; i < menuListItems.length; i++){
-	menuListItems[i].addEventListener('click', menuItemClicked);
-}
-function menuItemClicked(){
-	menuBtn.classList.remove('active');
-	menuList.classList.remove('active');
-}
+  // Function to close the menu when clicking a menu item
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
-var homeSection = document.querySelector('.home');
-window.addEventListener('scroll', pageScrollFunction);
-window.addEventListener('load', pageScrollFunction);
+  // Function to handle page scroll
+  const handleScroll = () => {
+    if (window.scrollY > 120) {
+      setIsHomeActive(true);
+    } else {
+      setIsHomeActive(false);
+    }
+  };
 
-function pageScrollFunction(){
-	if(window.scrollY > 120){
-		homeSection.classList.add('active');
-	}
-	else{
-		homeSection.classList.remove('active');
-	}
-}
-// Home Section Ends
+  useEffect(() => {
+    // Add scroll event listener on component mount
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('load', handleScroll);
 
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('load', handleScroll);
+    };
+  }, []);
+
+  return (
+    <section className={`home ${isHomeActive ? 'active' : ''}`} id="home">
+      <nav className="main-navbar">
+        <a href="#" className="logo">
+          {/* Logo here */}
+        </a>
+        <ul className={`nav-list ${isMenuOpen ? 'active' : ''}`}>
+          <li><a href="#home" onClick={closeMenu}>Home</a></li>
+          <li><a href="#about" onClick={closeMenu}>About</a></li>
+          <li><a href="#gallery" onClick={closeMenu}>Gallery</a></li>
+          <li><a href="#courses" onClick={closeMenu}>Courses</a></li>
+          <li><a href="#location" onClick={closeMenu}>Location</a></li>
+          <li><a href="#footer" onClick={closeMenu}>Contact</a></li>
+        </ul>
+        <a href="#" className="get-started-btn-container">
+          <button className="get-started-btn btn">Enroll Now</button>
+        </a>
+        <div className={`menu-btn ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+
+      <div className="home banner">
+        <div className="banner-desc">
+          {/* Banner content */}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Home;

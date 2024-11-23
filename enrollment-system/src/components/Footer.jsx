@@ -11,8 +11,11 @@ const Footer = () => {
           <img src={cvsuLogo} alt="CVSU Logo" />
           </div>
           <div className="col-contents">
-            <p>Lorem ipsum dolor sit amet...</p>
-            <p>Lorem ipsum dolor sit amet...</p>
+            <p>Cavite State University - Bacoor Campus was created on September 28, 2007, 
+              through Board Resolution No. 62, series of 2007. It is one of the campuses of 
+              Cavite State University (CVSU), an institution of learning that started out
+               in 1906 as the Indang Intermediate School.</p>
+
           </div>
         </div>
 
@@ -27,11 +30,15 @@ const Footer = () => {
             </div>
             <div className="contact-row">
               <span>Phone</span>
-              <span>(046) 476-5029</span>
+              <a href="tel:+63464765029" className="contact-link">
+              (046) 476-5029
+            </a>
             </div>
             <div className="contact-row">
               <span>Email</span>
-              <span>cvsubacoor@cvsu.edu.ph</span>
+              <a href="mailto:cvsubacoor@cvsu.edu.ph" className="contact-link">
+              cvsubacoor@cvsu.edu.ph
+            </a>
             </div>
           </div>
         </div>
@@ -41,30 +48,20 @@ const Footer = () => {
             <h3>Quick Links</h3>
           </div>
           <div className="col-contents">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Gallery</a>
-            <a href="#">Courses</a>
-            <a href="#">Location</a>
-            <a href="#">Contact</a>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#courses">Courses</a>
+            <a href="#location">Location</a>
+            <a href="#contact">Contact</a>
           </div>
         </div>
 
-        <div className="footer-col footer-col-4">
-          <div className="col-title">
-            <h3>Newsletter</h3>
-          </div>
-          <div className="col-contents">
-            <form className="newsletter">
-              <input type="email" placeholder="Your Email" />
-              <button className="newsletter-btn btn" type="submit">Subscribe</button>
-            </form>
-          </div>
-        </div>
+    
       </div>
 
       <div className="copy-rights">
-        <p>Created By <b>Team Narding</b> All Rights Reserved</p>
+        <p>Created By <b>Vunder Team</b> All Rights Reserved</p>
       </div>
     </section>
   );
