@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../assets/images/cvsu-logo.png';
 import backgroundImage from '../assets/images/cvsu-img1.jpg'; // Import background image
 
@@ -17,9 +18,9 @@ const Home = () => {
           <li><a href="#location">Location</a></li>
           <li><a href="#footer">Contact</a></li>
         </ul>
-        <a href="#" className="get-started-btn-container">
+        <Link to="/Application" className="get-started-btn-container">
           <button className="get-started-btn btn">Enroll Now</button>
-        </a>
+        </Link>
         <div className="menu-btn">
           <span></span>
         </div>
