@@ -9,6 +9,7 @@ import Location from './components/Location';
 import Footer from './components/Footer';
 
 import './css/landingpage.css';
+import './css/Application.css';
 import './js/script.jsx';
 import './App.css';
 

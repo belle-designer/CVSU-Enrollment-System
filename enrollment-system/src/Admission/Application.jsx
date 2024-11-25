@@ -4,7 +4,7 @@ const Application = () => {
   const [currentStep, setCurrentStep] = useState(0);
 
   const steps = [
-    { title: "Personal Information", fields: (
+    { title: "Application Details", fields: (
         <>
           <div>
             <label htmlFor="fullName" className="block text-gray-600 font-medium">Full Name</label>
@@ -16,7 +16,7 @@ const Application = () => {
           </div>
         </>
       ) },
-    { title: "Contact Information", fields: (
+    { title: "Applicant Profile", fields: (
         <>
           <div>
             <label htmlFor="email" className="block text-gray-600 font-medium">Email</label>
@@ -28,17 +28,75 @@ const Application = () => {
           </div>
         </>
       ) },
+      { title: "Family Profile", fields: (
+        <>
+          <div>
+            <label htmlFor="email" className="block text-gray-600 font-medium">Email</label>
+            <input type="email" id="email" name="email" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+          </div>
+          <div>
+            <label htmlFor="phone" className="block text-gray-600 font-medium">Phone</label>
+            <input type="tel" id="phone" name="phone" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+          </div>
+        </>
+      ) },
+
+      { title: "Educational Profile", fields: (
+        <>
+          <div>
+            <label htmlFor="email" className="block text-gray-600 font-medium">Email</label>
+            <input type="email" id="email" name="email" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+          </div>
+          <div>
+            <label htmlFor="phone" className="block text-gray-600 font-medium">Phone</label>
+            <input type="tel" id="phone" name="phone" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+          </div>
+        </>
+      ) },
+
+      { title: "Upload Requirements", fields: (
+        <>
+          <div>
+            <label htmlFor="email" className="block text-gray-600 font-medium">Email</label>
+            <input type="email" id="email" name="email" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+          </div>
+          <div>
+            <label htmlFor="phone" className="block text-gray-600 font-medium">Phone</label>
+            <input type="tel" id="phone" name="phone" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+          </div>
+        </>
+      ) },
+
+      { title: "Schedule Appointment", fields: (
+        <>
+          <div>
+            <label htmlFor="email" className="block text-gray-600 font-medium">Email</label>
+            <input type="email" id="email" name="email" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+          </div>
+          <div>
+            <label htmlFor="phone" className="block text-gray-600 font-medium">Phone</label>
+            <input type="tel" id="phone" name="phone" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+          </div>
+        </>
+      ) },
+
+
     { title: "Submit", fields: (
         <>
           <p className="text-gray-700">Click submit to complete your application.</p>
           <button type="submit" className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Submit</button>
+       
         </>
       ) }
   ];
 
   const progressItems = [
-    "Personal Information",
-    "Contact Information",
+    "Application Details",
+    "Applicant Profile",
+    "Family Profile",
+    "Educational Profile",
+    "Upload Requirements",
+    "Schedule Appointment",
     "Submit"
   ];
 
@@ -56,7 +114,7 @@ const Application = () => {
       </header>
 
       {/* Main Content Wrapper */}
-      <div className="flex w-full mt-16 pt-16">
+      <div className="flex w-full mt-16 pt-3">
         {/* Left Side Progress Bar */}
         <div className="w-1/4 bg-gray-200 p-6 fixed top-16 left-0 h-screen">
           <h2 className="text-xl font-bold mb-6 text-gray-700">Progress</h2>
@@ -76,10 +134,12 @@ const Application = () => {
 
         {/* Right Side Content Area */}
         <div className="w-3/4 p-6 ml-auto">
-          <div className="w-full min-h-screen bg-white p-8 pt-12 shadow-xl rounded-lg flex flex-col justify-between">
+          <div className="w-full min-h-screen bg-white p-8 pt-12 shadow-xl rounded-lg flex flex-col">
             <h2 className="text-2xl font-bold text-gray-700 mb-6">{steps[currentStep].title}</h2>
             <form id="applicationForm" className="space-y-4">
               {steps[currentStep].fields}
+
+              
               <div>
                 <button
                   type="button"
@@ -88,6 +148,7 @@ const Application = () => {
                 >
                   Next
                 </button>
+
               </div>
             </form>
           </div>
