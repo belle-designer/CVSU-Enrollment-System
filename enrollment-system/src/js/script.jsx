@@ -27,12 +27,10 @@ const Home = () => {
   useEffect(() => {
     // Add scroll event listener on component mount
     window.addEventListener('scroll', handleScroll);
-    window.addEventListener('load', handleScroll);
 
     // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('load', handleScroll);
     };
   }, []);
 

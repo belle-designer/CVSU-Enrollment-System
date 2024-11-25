@@ -121,6 +121,14 @@ const Application = () => {
 
   return (
     <div className="container">
+      {/* Background Section with Buttons */}
+      <div className="background-container">
+        <div className="buttons-container">
+          <button className="button enroll-now">Enroll Now</button>
+          <button className="button login">Login</button>
+        </div>
+      </div>
+
       {/* Header Section */}
       <header className="header">
         <h1 className="header-title">Admission Portal</h1>
@@ -135,9 +143,7 @@ const Application = () => {
             {progressItems.map((step, index) => (
               <div key={index} className="progress-item">
                 <div
-                  className={`progress-circle ${
-                    index <= currentStep ? "active" : ""
-                  }`}
+                  className={`progress-circle ${index <= currentStep ? "active" : ""}`}
                 >
                   {index + 1}
                 </div>

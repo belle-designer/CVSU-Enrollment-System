@@ -21,7 +21,7 @@ const Footer = () => {
 
         <div className="footer-col footer-col-2">
           <div className="col-title">
-            <h3>Contact</h3>
+            <h4>Contact</h4>
           </div>
           <div className="col-contents">
             <div className="contact-row">
@@ -45,7 +45,7 @@ const Footer = () => {
 
         <div className="footer-col footer-col-3">
           <div className="col-title">
-            <h3>Quick Links</h3>
+            <h4>Quick Links</h4>
           </div>
           <div className="col-contents">
             <a href="#home">Home</a>

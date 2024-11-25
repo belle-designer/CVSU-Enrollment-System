@@ -1,27 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/images/cvsu-logo.png';
 import backgroundImage from '../assets/images/cvsu-img1.jpg'; // Import background image
 
 const Home = () => {
+  // State to track menu visibility
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Toggle menu function
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Close menu function
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <section className="home" id="home">
       <nav className="main-navbar">
         <a href="#" className="logo">
           <img src={logo} alt="CVSU Logo" />
         </a>
-        <ul className="nav-list">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#courses">Courses</a></li>
-          <li><a href="#location">Location</a></li>
-          <li><a href="#footer">Contact</a></li>
+        <ul className={`nav-list ${isMenuOpen ? 'active' : ''}`}>
+          <li><a href="#home" onClick={closeMenu}>Home</a></li>
+          <li><a href="#about" onClick={closeMenu}>About</a></li>
+          <li><a href="#gallery" onClick={closeMenu}>Gallery</a></li>
+          <li><a href="#courses" onClick={closeMenu}>Courses</a></li>
+          <li><a href="#location" onClick={closeMenu}>Location</a></li>
+          <li><a href="#footer" onClick={closeMenu}>Contact</a></li>
         </ul>
-        <Link to="/Application" className="get-started-btn-container">
+        <Link to="/Application" className="get-started-btn-container" onClick={closeMenu}>
           <button className="get-started-btn btn">Enroll Now</button>
         </Link>
-        <div className="menu-btn">
+        <div className="menu-btn" onClick={toggleMenu}>
           <span></span>
         </div>
       </nav>
