@@ -1,93 +1,101 @@
 import React, { useState } from "react";
 
+
 const Application = () => {
   const [currentStep, setCurrentStep] = useState(0);
 
   const steps = [
-    { title: "Application Details", fields: (
+    {
+      title: "Application Details",
+      fields: (
         <>
           <div>
-            <label htmlFor="fullName" className="block text-gray-600 font-medium">Full Name</label>
-            <input type="text" id="fullName" name="fullName" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+            <label htmlFor="fullName" className="label">Full Name</label>
+            <input type="text" id="fullName" name="fullName" className="input" />
           </div>
           <div>
-            <label htmlFor="age" className="block text-gray-600 font-medium">Age</label>
-            <input type="number" id="age" name="age" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+            <label htmlFor="age" className="label">Age</label>
+            <input type="number" id="age" name="age" className="input" />
           </div>
         </>
-      ) },
-    { title: "Applicant Profile", fields: (
+      ),
+    },
+    {
+      title: "Applicant Profile",
+      fields: (
         <>
           <div>
-            <label htmlFor="email" className="block text-gray-600 font-medium">Email</label>
-            <input type="email" id="email" name="email" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+            <label htmlFor="email" className="label">Email</label>
+            <input type="email" id="email" name="email" className="input" />
           </div>
           <div>
-            <label htmlFor="phone" className="block text-gray-600 font-medium">Phone</label>
-            <input type="tel" id="phone" name="phone" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+            <label htmlFor="phone" className="label">Phone</label>
+            <input type="tel" id="phone" name="phone" className="input" />
           </div>
         </>
-      ) },
-      { title: "Family Profile", fields: (
+      ),
+    },
+    {
+      title: "Family Profile",
+      fields: (
         <>
           <div>
-            <label htmlFor="email" className="block text-gray-600 font-medium">Email</label>
-            <input type="email" id="email" name="email" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+            <label htmlFor="guardian" className="label">Guardian's Name</label>
+            <input type="text" id="guardian" name="guardian" className="input" />
           </div>
           <div>
-            <label htmlFor="phone" className="block text-gray-600 font-medium">Phone</label>
-            <input type="tel" id="phone" name="phone" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+            <label htmlFor="guardianContact" className="label">Guardian's Contact</label>
+            <input type="tel" id="guardianContact" name="guardianContact" className="input" />
           </div>
         </>
-      ) },
-
-      { title: "Educational Profile", fields: (
+      ),
+    },
+    {
+      title: "Educational Profile",
+      fields: (
         <>
           <div>
-            <label htmlFor="email" className="block text-gray-600 font-medium">Email</label>
-            <input type="email" id="email" name="email" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+            <label htmlFor="lastSchool" className="label">Last School Attended</label>
+            <input type="text" id="lastSchool" name="lastSchool" className="input" />
           </div>
           <div>
-            <label htmlFor="phone" className="block text-gray-600 font-medium">Phone</label>
-            <input type="tel" id="phone" name="phone" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+            <label htmlFor="yearGraduated" className="label">Year Graduated</label>
+            <input type="number" id="yearGraduated" name="yearGraduated" className="input" />
           </div>
         </>
-      ) },
-
-      { title: "Upload Requirements", fields: (
+      ),
+    },
+    {
+      title: "Upload Requirements",
+      fields: (
         <>
           <div>
-            <label htmlFor="email" className="block text-gray-600 font-medium">Email</label>
-            <input type="email" id="email" name="email" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+            <label htmlFor="resume" className="label">Upload Resume</label>
+            <input type="file" id="resume" name="resume" className="input" />
           </div>
           <div>
-            <label htmlFor="phone" className="block text-gray-600 font-medium">Phone</label>
-            <input type="tel" id="phone" name="phone" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+            <label htmlFor="certificate" className="label">Upload Certificate</label>
+            <input type="file" id="certificate" name="certificate" className="input" />
           </div>
         </>
-      ) },
-
-      { title: "Schedule Appointment", fields: (
+      ),
+    },
+    {
+      title: "Schedule Appointment",
+      fields: (
         <>
           <div>
-            <label htmlFor="email" className="block text-gray-600 font-medium">Email</label>
-            <input type="email" id="email" name="email" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+            <label htmlFor="appointmentDate" className="label">Appointment Date</label>
+            <input type="date" id="appointmentDate" name="appointmentDate" className="input" />
           </div>
           <div>
-            <label htmlFor="phone" className="block text-gray-600 font-medium">Phone</label>
-            <input type="tel" id="phone" name="phone" className="w-full border border-gray-300 rounded p-2 mt-1 focus:outline-none focus:ring focus:border-green-300" />
+            <label htmlFor="appointmentTime" className="label">Appointment Time</label>
+            <input type="time" id="appointmentTime" name="appointmentTime" className="input" />
           </div>
+          <button type="submit" className="button submit-button">Submit</button>
         </>
-      ) },
-
-
-    { title: "Submit", fields: (
-        <>
-          <p className="text-gray-700">Click submit to complete your application.</p>
-          <button type="submit" className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Submit</button>
-       
-        </>
-      ) }
+      ),
+    },
   ];
 
   const progressItems = [
@@ -97,7 +105,6 @@ const Application = () => {
     "Educational Profile",
     "Upload Requirements",
     "Schedule Appointment",
-    "Submit"
   ];
 
   const handleNextStep = () => {
@@ -106,49 +113,65 @@ const Application = () => {
     }
   };
 
+  const handlePreviousStep = () => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
   return (
-    <div className="bg-gray-100 font-sans flex flex-col min-h-screen">
+    <div className="container">
       {/* Header Section */}
-      <header className="w-full bg-green-500 text-white text-center py-4 fixed top-0 left-0 z-10">
-        <h1 className="text-3xl font-bold">Admission Portal</h1>
+      <header className="header">
+        <h1 className="header-title">Admission Portal</h1>
       </header>
 
       {/* Main Content Wrapper */}
-      <div className="flex w-full mt-16 pt-3">
+      <div className="main-wrapper">
         {/* Left Side Progress Bar */}
-        <div className="w-1/4 bg-gray-200 p-6 fixed top-16 left-0 h-screen">
-          <h2 className="text-xl font-bold mb-6 text-gray-700">Progress</h2>
+        <div className="progress-bar">
+          <h2 className="progress-title">Progress</h2>
           <div>
             {progressItems.map((step, index) => (
-              <div key={index} className="flex items-center mb-4">
+              <div key={index} className="progress-item">
                 <div
-                  className={`h-8 w-8 flex items-center justify-center rounded-full ${index <= currentStep ? 'bg-green-500 text-white' : 'bg-gray-300 text-gray-600'}`}
+                  className={`progress-circle ${
+                    index <= currentStep ? "active" : ""
+                  }`}
                 >
                   {index + 1}
                 </div>
-                <p className="ml-4 text-gray-700">{step}</p>
+                <p className="progress-label">{step}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Right Side Content Area */}
-        <div className="w-3/4 p-6 ml-auto">
-          <div className="w-full min-h-screen bg-white p-8 pt-12 shadow-xl rounded-lg flex flex-col">
-            <h2 className="text-2xl font-bold text-gray-700 mb-6">{steps[currentStep].title}</h2>
-            <form id="applicationForm" className="space-y-4">
+        <div className="content-area">
+          <div className="content-box">
+            <h2 className="content-title">{steps[currentStep].title}</h2>
+            <form id="applicationForm" className="form">
               {steps[currentStep].fields}
-
-              
-              <div>
-                <button
-                  type="button"
-                  onClick={handleNextStep}
-                  className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-                >
-                  Next
-                </button>
-
+              <div className="button-group">
+                {currentStep > 0 && (
+                  <button
+                    type="button"
+                    onClick={handlePreviousStep}
+                    className="button previous-button"
+                  >
+                    Previous
+                  </button>
+                )}
+                {currentStep < steps.length - 1 && (
+                  <button
+                    type="button"
+                    onClick={handleNextStep}
+                    className="button next-button"
+                  >
+                    Next
+                  </button>
+                )}
               </div>
             </form>
           </div>
