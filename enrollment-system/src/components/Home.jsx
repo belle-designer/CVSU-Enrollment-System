@@ -39,13 +39,14 @@ const Home = () => {
         </div>
       </nav>
 
-      {/* Apply the background image as inline style */}
+      {/* Apply the background image with opacity */}
       <div
         className="home banner"
         style={{
           backgroundImage: `url(${backgroundImage})`,
         }}
       >
+        <div className="overlay"></div> {/* Add an overlay */}
         <div className="banner-desc">
           {/* Add content here */}
         </div>
