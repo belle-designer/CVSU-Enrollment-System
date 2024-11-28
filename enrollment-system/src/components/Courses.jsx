@@ -13,29 +13,29 @@ function Courses() {
     },
     {
       title: "BS Secondary Education Major in Math",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      description: "It focused on preparing students to become secondary school teachers specializing in mathematics. It covers both educational theory and mathematics content, including algebra, calculus, and statistics."
     },
     {
       title: "BS Secondary Education Major in English",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      description: "Designed to prepare students to teach English at the secondary school level. It includes courses in English literature, linguistics, teaching methodologies, and educational psychology."
     },
     {
       title: "BS Business Management",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      description: "Focuses on the principles of managing businesses, including organizational behavior, finance, marketing, human resources, and strategic planning. It prepares students for leadership roles in various industries."
     },
   
     {
       title: "BS Criminology",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      description: "A program that studies crime, criminal behavior, law enforcement, and the justice system. It prepares students for careers in law enforcement, corrections, and criminal justice administration."
     },
     {
       title: "BS Hospitality Management",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      description: "A degree program that prepares students for careers in the hospitality industry, including hotels, restaurants, tourism, and event management. It covers topics like customer service, business operations, and hospitality law."
     },
 
     {
       title: "BS Psychology",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      description: "A program focused on the scientific study of behavior and mental processes. It prepares students for careers in counseling, therapy, human resources, or further education in psychology or related fields."
     }
 
     
