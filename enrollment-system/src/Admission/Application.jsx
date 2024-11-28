@@ -56,7 +56,7 @@ const Application = () => {
       <header className="w-full bg-[#208245] text-white py-4 px-6 shadow-md flex items-center justify-between">
         <h1 className="text-xl font-bold">Welcome, {studentName}!</h1>
         <button
-          className="flex items-center gap-2 bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg"
+          className="flex items-center gap-2 hover:bg-green-600 px-4 py-2 rounded-lg"
           onClick={handleLogout}
         >
           <FaSignOutAlt className="text-white" />
@@ -325,16 +325,17 @@ const Application = () => {
                     className="w-full px-3 py-2 border rounded-lg focus:outline-none"
                   />
                 </div>
-                <div>
-                  <label className="block text-gray-600 font-medium mb-1">
-                    Year of Graduation
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Enter your year of graduation"
-                    className="w-full px-3 py-2 border rounded-lg focus:outline-none"
-                  />
-                </div>
+                              <div>
+                <label className="block text-gray-600 font-medium mb-1">
+                  Year of Graduation
+                </label>
+                <input
+                  type="month" 
+                  placeholder="Enter your year of graduation"
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-none"
+                />
+              </div>
+
                 <button
                   type="button"
                   className="mt-4 bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300"
