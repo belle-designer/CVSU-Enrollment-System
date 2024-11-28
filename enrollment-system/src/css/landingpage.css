@@ -19,20 +19,39 @@ html{
 }
 /*   === Global Styling Starts ===   */
 button.btn{
-	padding: 10px 18px;
-	background-color: var(--primary-clr);
-	color: var(--light-heading-clr);
+	padding: 5px 10px;
+	color: var(--primary-clr); /* Green text */
 	font-size: 15px;
 	border: 1px solid transparent;
 	border-radius: 5px;
 	cursor: pointer;
 	transition: all 0.3s;
-}
-button.btn:hover{
-	background-color: var(--light-heading-clr);
-	color: var(--primary-clr);
 	border: 1px solid var(--primary-clr);
 }
+.buttons-container {
+	display: flex;
+	gap: 30px; /* Adjust the space between the buttons */
+	
+  }
+
+.secondary-btn {
+	background-color: white; /* White background */
+	
+	border: 2px solid #28a745; /* Green border */
+	padding: 10px 20px; /* Button padding */
+	border-radius: 5px; /* Rounded corners */
+	font-size: 16px; /* Font size */
+	cursor: pointer; /* Pointer on hover */
+	transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+  }
+  
+  .secondary-btn:hover {
+	background-color: #208245; /* Green background on hover */
+	color: white; /* White text on hover */
+	border-color: #28a745; /* Maintain green border */
+  }
+  
+  
 .section-header h1{
 	position: relative;
 	font-size: 32px;

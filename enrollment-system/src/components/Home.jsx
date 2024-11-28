@@ -31,9 +31,15 @@ const Home = () => {
           <li><a href="#location" onClick={closeMenu}>Location</a></li>
           <li><a href="#footer" onClick={closeMenu}>Contact</a></li>
         </ul>
-        <Link to="/Application" className="get-started-btn-container" onClick={closeMenu}>
-          <button className="get-started-btn btn">Enroll Now</button>
-        </Link>
+        
+        <div className="buttons-container">
+          <Link to="/Login" className="btn-container" onClick={closeMenu}>
+            <button className="btn secondary-btn">Login</button>
+          </Link>
+          <Link to="/Application" className="btn-container" onClick={closeMenu}>
+            <button className="btn get-started-btn">Enroll Now</button>
+          </Link>
+        </div>
         <div className="menu-btn" onClick={toggleMenu}>
           <span></span>
         </div>

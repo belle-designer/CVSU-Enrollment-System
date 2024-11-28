@@ -6,35 +6,106 @@ const Application = () => {
 
   const steps = [
     {
-      title: "Application Details",
-      fields: (
-        <>
-          <div>
-            <label htmlFor="fullName" className="label">Full Name</label>
-            <input type="text" id="fullName" name="fullName" className="input" />
-          </div>
-          <div>
-            <label htmlFor="age" className="label">Age</label>
-            <input type="number" id="age" name="age" className="input" />
-          </div>
-        </>
-      ),
-    },
-    {
-      title: "Applicant Profile",
-      fields: (
-        <>
-          <div>
-            <label htmlFor="email" className="label">Email</label>
-            <input type="email" id="email" name="email" className="input" />
-          </div>
-          <div>
-            <label htmlFor="phone" className="label">Phone</label>
-            <input type="tel" id="phone" name="phone" className="input" />
-          </div>
-        </>
-      ),
-    },
+  title: "Application Details",
+  fields: (
+    <>
+      <div>
+        <label htmlFor="typeOfApplicant" className="label">Type of Applicant</label>
+        <select id="typeOfApplicant" name="typeOfApplicant" className="input">
+        <option value="" disabled>Select Type</option>
+          <option value="als">Alternative Learning System (ALS) Passer</option>
+          <option value="degree">Bachelor's Degree Graduate</option>
+          <option value="grade12">Currently Enrolled Grade 12 Student</option>
+          <option value="foreign">Foreign Undergraduate Student Applicant</option>
+          <option value="shs">Senior High School Graduate</option>
+          <option value="transferee">Transferee</option>
+        </select>
+      </div>
+      <div>
+        <label htmlFor="preferredProgram" className="label">Preferred Program</label>
+        <select id="preferredProgram" name="preferredProgram" className="input">
+          <option value=""disabled>Select Program</option>
+          <option value="bscs">Bachelor of Science in Computer Science</option>
+          <option value="bsit">Bachelor of Science in Information Technology</option>
+          
+        </select>
+      </div>
+    </>
+  ),
+},
+
+{
+  title: "Applicant Profile",
+  fields: (
+    <>
+      <div className="form-row">
+        <div className="form-group">
+          <label htmlFor="firstName" className="label">First Name</label>
+          <input type="text" id="firstName" name="firstName" className="input" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="middleName" className="label">Middle Name</label>
+          <input type="text" id="middleName" name="middleName" className="input" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="lastName" className="label">Last Name</label>
+          <input type="text" id="lastName" name="lastName" className="input" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="suffix" className="label">Suffix (Optional)</label>
+          <input type="text" id="suffix" name="suffix" className="input" />
+        </div>
+      </div>
+      <div className="form-row">
+  <div className="form-group">
+    <label htmlFor="sex" className="label">Sex at Birth</label>
+    <select id="sex" name="sex" className="input">
+      <option value="" disabled>Select Sex</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+
+  <div className="form-group">
+  <label htmlFor="dob" className="label">Date of Birth</label>
+  <input type="date" id="dob" name="dob" className="input" />
+</div>
+
+<div className="form-group">
+  <label htmlFor="civilStatus" className="label">Civil Status</label>
+  <select id="civilStatus" name="civilStatus" className="input">
+    <option value="" disabled>Select Civil Status</option>
+    <option value="single">Single</option>
+    <option value="married">Married</option>
+    <option value="widowed">Widowed</option>
+    <option value="divorced">Divorced</option>
+    <option value="separated">Separated</option>
+  </select>
+</div>
+
+        <div className="form-group">
+          <label htmlFor="sex" className="label">Contact Number</label>
+          <input type="text" id="sex" name="sex" className="input" />
+        </div>
+      
+      </div>
+      <div className="form-row">
+        <div className="form-group">
+          <label htmlFor="firstName" className="label">Religion</label>
+          <input type="text" id="firstName" name="firstName" className="input" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="middleName" className="label">Nationality</label>
+          <input type="text" id="middleName" name="middleName" className="input" />
+        </div>
+ 
+      </div>
+    </>
+  ),
+},
+
+
     {
       title: "Family Profile",
       fields: (
@@ -138,7 +209,7 @@ const Application = () => {
       <div className="main-wrapper">
         {/* Left Side Progress Bar */}
         <div className="progress-bar">
-          <h2 className="progress-title">Progress</h2>
+          <h2 className="progress-title">Admission Process</h2>
           <div>
             {progressItems.map((step, index) => (
               <div key={index} className="progress-item">
@@ -159,6 +230,7 @@ const Application = () => {
             <h2 className="content-title">{steps[currentStep].title}</h2>
             <form id="applicationForm" className="form">
               {steps[currentStep].fields}
+              
               <div className="button-group">
                 {currentStep > 0 && (
                   <button
