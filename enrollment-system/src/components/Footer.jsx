@@ -59,7 +59,7 @@ const Footer = () => {
       </div>
 
       <div className="copy-rights">
-        <p>Created By <b>Vunder Team</b> All Rights Reserved</p>
+        <p> 2024 <b>Enrollment System</b> All Rights Reserved</p>
       </div>
     </section>
   );
