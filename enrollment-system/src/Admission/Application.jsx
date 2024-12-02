@@ -7,6 +7,10 @@ const Application = () => {
   const [image, setImage] = useState(null); // State for image upload
   const studentName = "Mary Ann"; // Example name
 
+  // Initializing at Step 8 (Medical Clearance)
+  const [medicalCheckStatus, setMedicalCheckStatus] = useState("pending"); // Default status
+  const [clearanceDate, setClearanceDate] = useState(""); // Date of Medical Clearance
+
   const navigate = useNavigate(); // Initialize the navigate function
 
   // Sample scheduled appointment from the admin
@@ -35,14 +39,17 @@ const Application = () => {
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
-    if (file) {
+    if (file && file.type.startsWith('image/') && file.size <= 2 * 1024 * 1024) {
       const reader = new FileReader();
       reader.onloadend = () => {
         setImage(reader.result);
       };
       reader.readAsDataURL(file);
+    } else {
+      alert("Please upload a valid image (max 2MB).");
     }
   };
+  
 
   const handleLogout = () => {
     // On logout, navigate back to the Home component (login page or dashboard)
@@ -50,64 +57,103 @@ const Application = () => {
     alert("You have been logged out!");
   };
 
+  const [examStatus, setExamStatus] = useState("pending"); // Can be "pending", "failed", or "passed"
+  const handleStepChange = (step) => {
+    setStep(step);
+  };
+
+  const handleMedicalClearanceSubmit = (e) => {
+    e.preventDefault();
+    // Handle submission logic here
+    console.log('Medical Clearance Form Submitted');
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       {/* Header */}
       <header className="w-full bg-[#208245] text-white py-4 px-6 shadow-md flex items-center justify-between">
-        <h1 className="text-xl font-bold">Welcome, {studentName}!</h1>
-        <button
-          className="flex items-center gap-2 hover:bg-green-600 px-4 py-2 rounded-lg"
-          onClick={handleLogout}
-        >
-          <FaSignOutAlt className="text-white" />
-          <span>Logout</span>
-        </button>
-      </header>
+  <h1 className="text-xl font-bold">Welcome, {studentName}!</h1>
+  
+  {/* Add the hamburger menu here, if needed */}
+  <div className="lg:hidden">
+    <button className="text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-black">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+
+  <button
+    className="flex items-center gap-2 hover:bg-green-600 px-4 py-2 rounded-lg"
+    onClick={handleLogout}
+  >
+    <FaSignOutAlt className="text-white" />
+    <span>Logout</span>
+  </button>
+</header>
 
       <div className="flex flex-1">
-        {/* Sidebar */}
-        <div className="w-64 bg-gray-100 h-screen shadow-lg">
-          <h2 className="text-center text-xl font-bold py-4">Admission Process</h2>
-          <ul className="space-y-2 px-4">
-            {steps.map((step, index) => (
-              <li key={index}>
-                <button
-                  disabled={index + 1 !== currentStep} // Disable button if not the current step
-                  onClick={() => setStep(index + 1)}
-                  className={`flex items-center w-full px-4 py-2 rounded-lg font-medium text-left ${
-                    index + 1 === currentStep
-                      ? "bg-green-500 text-white"
-                      : "bg-gray-200 text-gray-700 hover:bg-green-200 disabled:opacity-50 disabled:pointer-events-none"
-                  }`}
-                >
-                  <span
-                    className={`flex items-center justify-center w-6 h-6 rounded-full mr-3 ${
-                      index + 1 === currentStep
-                        ? "bg-white text-green-500"
-                        : "bg-gray-300 text-gray-700"
-                    }`}
-                  >
-                    {index + 1}
-                  </span>
-                  {step.title}
-                </button>
-              </li>
-            ))}
-            {/* Exam Result - not part of steps, added after Step 6 */}
-            <li>
-              <button
-                onClick={() => setStep("examResult")}
-                className={`flex items-center w-full px-4 py-2 rounded-lg font-medium text-left ${
-                  currentStep === "examResult"
-                    ? "bg-green-500 text-white"
-                    : "bg-gray-200 text-gray-700 hover:bg-green-500"
-                }`}
-              >
-                Exam Result
-              </button>
-            </li>
-          </ul>
-        </div>
+  {/* Sidebar */}
+  <div className="w-64 bg-gray-100 h-screen shadow-lg">
+    <h2 className="text-center text-xl font-bold py-4">Admission Process</h2>
+    <ul className="space-y-2 px-4">
+      {/* Render Steps */}
+      {steps.map((step, index) => (
+        <li key={index}>
+          <button
+            disabled={index + 1 !== currentStep} // Disable button if not the current step
+            onClick={() => setStep(index + 1)}
+            className={`flex items-center w-full px-4 py-2 rounded-lg font-medium text-left ${
+              index + 1 === currentStep
+                ? "bg-green-500 text-white"
+                : "bg-gray-200 text-gray-700 hover:bg-green-200 disabled:opacity-50 disabled:pointer-events-none"
+            }`}
+          >
+            <span
+              className={`flex items-center justify-center w-6 h-6 rounded-full mr-3 ${
+                index + 1 === currentStep
+                  ? "bg-white text-green-500"
+                  : "bg-gray-300 text-gray-700"
+              }`}
+            >
+              {index + 1}
+            </span>
+            {step.title}
+          </button>
+        </li>
+      ))}
+
+      {/* Exam Result - Custom button for Exam Result */}
+      <li>
+        <button
+          onClick={() => setStep("examResult")}
+          className={`flex items-center w-full px-4 py-2 rounded-lg font-medium text-left ${
+            currentStep === "examResult"
+              ? "bg-green-500 text-white"
+              : "bg-gray-200 text-gray-700 hover:bg-green-500"
+          }`}
+        >
+          Exam Result
+        </button>
+      </li>
+
+      {/* Medical Clearance - Custom button for Medical Clearance */}
+      <li>
+        <button
+          onClick={() => setStep("medicalClearance")}
+          className={`flex items-center w-full px-4 py-2 rounded-lg font-medium text-left ${
+            currentStep === "medicalClearance"
+              ? "bg-green-500 text-white"
+              : "bg-gray-200 text-gray-700 hover:bg-green-500"
+          }`}
+        >
+          Medical Clearance
+        </button>
+      </li>
+    </ul>
+  </div>
+
+
 
         {/* Main Content */}
         <div className="flex-1 p-6">
@@ -383,19 +429,43 @@ const Application = () => {
             )}
 
 
-            {/* Other Steps... */}
-            {currentStep === 6 && (
-              <div className="mt-4">
-                <h3 className="text-lg font-semibold">Scheduled Appointment</h3>
-                <p>Your scheduled appointment: {scheduledDateTime}</p>
-              </div>
-            )}
+{currentStep === 6 && (
+  <div className="mt-4">
+    <h3 className="text-lg font-semibold">Scheduled Appointment</h3>
+    <p>Your scheduled appointment: {scheduledDateTime}</p>
+    <button
+      type="button"
+      className="mt-4 bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300"
+      onClick={() => setStep(currentStep - 1)} // Navigate to the previous step
+    >
+      Previous
+    </button>
+    <button
+      type="button"
+      className="ml-4 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"
+      onClick={handleSubmit} // Trigger the form submission
+    >
+      Submit Application
+    </button>
+  </div>
+)}
 
-            {/* Exam Result Step */}
-            {currentStep === "examResult" && (
-              <div className="space-y-4">
-                <h2 className="text-2xl font-bold mb-4">Exam Results</h2>
-                <p className="text-gray-700">Your examination result is pending.</p>
+
+{currentStep === "examResult" && (
+  <div className="mt-4">
+    <h3 className="text-lg font-semibold">Exam Result</h3>
+    {/* Logic to display result */}
+    <p className="mt-2 text-gray-700">
+      {examStatus === "pending" && (
+        <span className="text-yellow-500 font-bold">Pending</span>
+      )}
+      {examStatus === "failed" && (
+        <span className="text-red-500 font-bold">Failed</span>
+      )}
+      {examStatus === "passed" && (
+        <span className="text-green-500 font-bold">Passed</span>
+      )}
+    </p>
                 <button
                   onClick={goToDashboard}
                   className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-800"
@@ -404,6 +474,45 @@ const Application = () => {
                 </button>
               </div>
             )}
+
+            
+{currentStep === "medicalClearance" && (
+  <div id="medical-clearance" className="mt-4">
+    <h3 className="text-xl font-semibold">Medical Clearance</h3>
+
+    <div className="mt-4">
+      <label className="block text-gray-700">Medical Check Status:</label>
+      <p className="text-lg font-medium">
+        {medicalCheckStatus === 'approved'
+          ? 'Approved'
+          : medicalCheckStatus === 'pending'
+          ? 'Pending'
+          : 'Not Approved'}
+      </p>
+    </div>
+
+
+    <div className="mt-4">
+      <button
+        type="button"
+        className="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300"
+        onClick={() => setStep("examResult")} // Go back to previous step
+      >
+        Previous
+      </button>
+      <button
+        type="submit"
+        className="ml-4 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+)}
+
+
+
+
           </div>
         </div>
       </div>
