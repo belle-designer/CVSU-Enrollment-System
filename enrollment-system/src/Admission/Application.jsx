@@ -26,6 +26,12 @@ const Application = () => {
     { title: "Schedule", description: "View your scheduled appointment date and time." },
   ];
 
+  const [sidebarVisible, setSidebarVisible] = useState(true); // State to toggle sidebar visibility
+  const toggleSidebar = () => {
+    setSidebarVisible(!sidebarVisible); // Toggle visibility of the sidebar
+  };
+
+
   const handleSubmit = () => {
     // Handle the form submission logic here
     alert("Application submitted successfully!");
@@ -76,7 +82,7 @@ const Application = () => {
   
   {/* Add the hamburger menu here, if needed */}
   <div className="lg:hidden">
-    <button className="text-white">
+  <button className="text-white" onClick={toggleSidebar}>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-black">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
@@ -94,6 +100,7 @@ const Application = () => {
 
       <div className="flex flex-1">
   {/* Sidebar */}
+  {sidebarVisible && (
   <div className="w-64 bg-gray-100 h-screen shadow-lg">
     <h2 className="text-center text-xl font-bold py-4">Admission Process</h2>
     <ul className="space-y-2 px-4">
@@ -152,6 +159,8 @@ const Application = () => {
       </li>
     </ul>
   </div>
+
+        )}
 
 
 
