@@ -13,6 +13,12 @@ import './css/Application.css';
 import './js/script.jsx';
 import './App.css';
 
+import OfficerDashboard from './OfficerDashboard/OfficerDashboard.jsx';
+import StudentDashboard from './StudentDashboard/StudentDashboard.jsx';
+import './css/Officer.css';
+import './js/Officer';
+
+
 function App() {
   return (
     <Router>
@@ -23,9 +29,24 @@ function App() {
 
           {/* Separate route for Application (with no common sections like Footer or Home) */}
           <Route path="/Application" element={<Application />} />
+
+          <Route path="/StudentDashboard" element={<StudentDashboard />} />
+          
         </Routes>
+        
       </div>
+      
+
+      {/* <div id="app">
+      <Sidebar />
+      <section id="content">
+        <Navbar />
+        <OfficerDashboard/>
+      </section>
+      </div> */}
     </Router>
+
+    
   );
 }
 
