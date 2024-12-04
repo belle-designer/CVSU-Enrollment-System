@@ -1,0 +1,54 @@
+
+/* Sidebar */
+#sidebar {
+	position: fixed;
+	max-width: 300px; /* Expanded sidebar */
+	width: 100%;
+	background: var(--light);
+	top: 0;
+	left: 0;
+	height: 100%;
+	overflow-y: auto;
+	transition: all 0.3s ease;
+	z-index: 200;
+  }
+  
+  #sidebar.hide {
+	max-width: 60px; /* Collapsed sidebar */
+  }
+  
+  /* Content */
+  #content {
+	position: relative;
+	width: calc(100% - 260px); /* When sidebar is expanded */
+	left: 260px; /* Space for the expanded sidebar */
+	transition: all 0.3s ease;
+  }
+  
+  #sidebar.hide + #content {
+	width: calc(100% - 60px); /* When sidebar is collapsed */
+	left: 60px; /* Adjust content to fit when sidebar is collapsed */
+  }
+  
+  /* Optional: Ensure smooth transition */
+  #content, #sidebar {
+	transition: all 0.3s ease;
+  }
+  
+  /* Optional: You can add a bit more responsiveness to make the layout more flexible */
+  @media screen and (max-width: 768px) {
+	#sidebar {
+	  max-width: 0; /* Hide sidebar on smaller screens */
+	  z-index: 10;
+	}
+  
+	#sidebar.hide {
+	  max-width: 100%; /* Re-enable the sidebar on mobile screens */
+	}
+  
+	#content {
+	  width: 100%; /* Adjust content width on mobile screens */
+	  left: 0; /* No left margin on mobile screens */
+	}
+  }
+  
