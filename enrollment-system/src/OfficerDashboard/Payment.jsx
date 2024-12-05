@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-const Students = () => {
+const Payment = () => {
   // Example student data
   const allStudents = [
-    { id: 1, studentNo: '202211839', firstName: 'Mary Ann', middleName: 'Torres', lastName: 'Motol', suffix: 'NA', dob: '02/05/2001', program: 'BSCS', status: 'Regular', yearEnrolled: 2022,  },
-    { id: 2, studentNo: '202211840', firstName: 'John', middleName: 'William', lastName: 'Doe', suffix: 'Jr', dob: '10/02/2000', program: 'BSIT', status: 'Irregular', yearEnrolled: 2021,  },
-    { id: 3, studentNo: '202211841', firstName: 'Jane', middleName: 'Marie', lastName: 'Smith', suffix: 'Sr', dob: '06/15/1999', program: 'BSBA', status: 'Returnee', yearEnrolled: 2023,  },
-    { id: 4, studentNo: '202211842', firstName: 'Alice', middleName: 'Grace', lastName: 'Wang', suffix: 'NA', dob: '03/25/2002', program: 'BSCS', status: 'Regular', yearEnrolled: 2022, },
+    { id: 1, studentNo: '202211839', firstName: 'Mary Ann', middleName: 'Torres', lastName: 'Motol', suffix: 'NA', dob: '02/05/2001', program: 'BSCS', status: 'Regular', yearEnrolled: 2022, paymentStatus: 'Paid' },
+    { id: 2, studentNo: '202211840', firstName: 'John', middleName: 'William', lastName: 'Doe', suffix: 'Jr', dob: '10/02/2000', program: 'BSIT', status: 'Irregular', yearEnrolled: 2021, paymentStatus: 'Pending' },
+    { id: 3, studentNo: '202211841', firstName: 'Jane', middleName: 'Marie', lastName: 'Smith', suffix: 'Sr', dob: '06/15/1999', program: 'BSBA', status: 'Returnee', yearEnrolled: 2023, paymentStatus: 'Paid' },
+    { id: 4, studentNo: '202211842', firstName: 'Alice', middleName: 'Grace', lastName: 'Wang', suffix: 'NA', dob: '03/25/2002', program: 'BSCS', status: 'Regular', yearEnrolled: 2022, paymentStatus: 'Paid' },
     // Add more students...
   ];
 
@@ -108,14 +108,14 @@ const Students = () => {
   return (
     <main>
       {/* Title and Breadcrumb */}
-      <h1 className="text-3xl font-semibold mb-2">Student Management</h1>
+      <h1 className="text-3xl font-semibold mb-2">Payment Management</h1>
       <ul className="flex gap-1 text-sm">
         <li><a href="#" className="text-blue-500">Home</a></li>
         <li className="text-gray-400">/</li>
         <li><a href="#" className="text-gray-700 font-semibold">All Students</a></li>
       </ul>
 
-      <h3 className="text-2xl font-semibold pt-6 pb-6">All Students Data Summary</h3>
+      <h3 className="text-2xl font-semibold pt-6 pb-6">All Students</h3>
 
       <div className='bg-white rounded-lg'>
         {/* Top Container (Search Bar + Dropdown + Button) */}
@@ -165,6 +165,7 @@ const Students = () => {
                 <th className="px-4 py-2 text-center">Program</th>
                 <th className="px-4 py-2 text-center">Status</th>
                 <th className="px-4 py-2 text-center">Year Enrolled</th>
+                <th className="px-4 py-2 text-center">Payment Status</th>
                 <th className="px-4 py-2 text-center">Actions</th>
               </tr>
             </thead>
@@ -182,6 +183,7 @@ const Students = () => {
                   <td className="px-4 py-2 text-center">{student.program}</td>
                   <td className="px-4 py-2 text-center">{student.status}</td>
                   <td className="px-4 py-2 text-center">{student.yearEnrolled}</td>
+                  <td className="px-4 py-2 text-center">{student.paymentStatus}</td>
                   <td className="px-4 py-2 text-center">
                     {/* Actions: Edit and Delete buttons */}
                     <div className="flex justify-center gap-2">
@@ -252,7 +254,7 @@ const Students = () => {
       {isModalOpen && selectedStudent && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg shadow-lg w-2/3 max-w-2xl">
-            <h2 className="text-xl font-semibold mb-4">Edit Student</h2>
+            <h2 className="text-xl font-semibold mb-4">Edit Payment Status</h2>
             <form>
               {/* Form Fields */}
               <div className="grid grid-cols-2 gap-4">
@@ -260,61 +262,61 @@ const Students = () => {
                   <label className="block text-sm font-medium">Student No.</label>
                   <input
                     type="text"
-                    className="w-full p-2 border border-gray-300 rounded-md"
+                    className="w-full bg-gray-200 p-2 border border-gray-300 rounded-md"
                     value={selectedStudent.studentNo || ''}
-                    onChange={(e) => setSelectedStudent({ ...selectedStudent, studentNo: e.target.value })}
+                    readOnly
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium">First Name</label>
                   <input
                     type="text"
-                    className="w-full p-2 border border-gray-300 rounded-md"
+                    className="w-full bg-gray-300 p-2 border border-gray-300 rounded-md"
                     value={selectedStudent.firstName || ''}
-                    onChange={(e) => setSelectedStudent({ ...selectedStudent, firstName: e.target.value })}
+                    readOnly
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium">Middle Name</label>
                   <input
                     type="text"
-                    className="w-full p-2 border border-gray-300 rounded-md"
+                    className="w-full bg-gray-200 p-2 border border-gray-300 rounded-md"
                     value={selectedStudent.middleName || ''}
-                    onChange={(e) => setSelectedStudent({ ...selectedStudent, middleName: e.target.value })}
+                   readOnly
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium">Last Name</label>
                   <input
                     type="text"
-                    className="w-full p-2 border border-gray-300 rounded-md"
+                    className="w-full bg-gray-200 p-2 border border-gray-300 rounded-md"
                     value={selectedStudent.lastName || ''}
-                    onChange={(e) => setSelectedStudent({ ...selectedStudent, lastName: e.target.value })}
+                    readOnly
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium">Suffix</label>
                   <input
                     type="text"
-                    className="w-full p-2 border border-gray-300 rounded-md"
+                    className="w-full bg-gray-200 p-2 border border-gray-3 rounded-md"
                     value={selectedStudent.suffix || ''}
-                    onChange={(e) => setSelectedStudent({ ...selectedStudent, suffix: e.target.value })}
+                   readOnly
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium">Date of Birth</label>
                   <input
                     type="date"
-                    className="w-full p-2 border border-gray-300 rounded-md"
+                    className="w-full bg-gray-200 p-2 border border-gray-300 rounded-md"
                     value={selectedStudent.dob || ''}
-                    onChange={(e) => setSelectedStudent({ ...selectedStudent, dob: e.target.value })}
+                   readOnly
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium">Program</label>
                   <input
                     type="text"
-                    className="w-full p-2 border border-gray-300 rounded-md"
+                    className="w-full bg-gray-200 p-2 border border-gray-300 rounded-md"
                     value={selectedStudent.program || ''}
                     onChange={(e) => setSelectedStudent({ ...selectedStudent, program: e.target.value })}
                   />
@@ -322,7 +324,7 @@ const Students = () => {
                 <div>
                   <label className="block text-sm font-medium">Status</label>
                   <select
-                    className="w-full p-2 border border-gray-300 rounded-md"
+                    className="w-full bg-gray-200 p-2 border border-gray-300 rounded-md"
                     value={selectedStudent.status || ''}
                     onChange={(e) => setSelectedStudent({ ...selectedStudent, status: e.target.value })}
                   >
@@ -335,12 +337,22 @@ const Students = () => {
                   <label className="block text-sm font-medium">Year Enrolled</label>
                   <input
                     type="number"
-                    className="w-full p-2 border border-gray-300 rounded-md"
+                    className="w-full bg-gray-200 p-2 border border-gray-300 rounded-md"
                     value={selectedStudent.yearEnrolled || ''}
                     onChange={(e) => setSelectedStudent({ ...selectedStudent, yearEnrolled: e.target.value })}
                   />
                 </div>
-                
+                <div>
+                  <label className="block text-sm font-medium">Payment Status</label>
+                  <select
+                    className="w-full p-2 border border-gray-300 rounded-md"
+                    value={selectedStudent.paymentStatus || ''}
+                    onChange={(e) => setSelectedStudent({ ...selectedStudent, paymentStatus: e.target.value })}
+                  >
+                    <option value="Paid">Paid</option>
+                    <option value="Pending">Pending</option>
+                  </select>
+                </div>
               </div>
 
               <div className="flex justify-end gap-4 mt-6">
@@ -395,4 +407,4 @@ const Students = () => {
   );
 };
 
-export default Students;
+export default Payment;
