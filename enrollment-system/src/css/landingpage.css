@@ -402,6 +402,174 @@ section.partners{
 }
 /*   === Partners Section Styling Ends ===   */
 
+
+/* Dark mode styles for About */
+body.dark {
+	background-color: #121212; /* Dark background */
+	color: white; /* White text */
+  }
+  body.dark .about {
+	background-color: #1a1a1a; /* Dark background for the gallery */
+  }
+
+  body.dark .about h2 {
+	color:white; /* Slightly dim images for dark mode */
+  }
+  body.dark .about p {
+	color:rgba(255, 255, 255, 0.692); /* Slightly dim images for dark mode */
+  }
+
+
+  
+  /* Dark mode for the GALLERY */
+  body.dark .gallery {
+	background-color: #1a1a1a; /* Dark background for the gallery */
+  }
+  
+  body.dark .gallery .section-header h1 {
+	color: white; /* White text for the gallery header */
+  }
+  
+  body.dark .gallery .relative {
+	background-color: #333; /* Dark background for the gallery container */
+  }
+  
+  body.dark .gallery img {
+	filter: brightness(0.8); /* Slightly dim images for dark mode */
+  }
+  
+
+
+  body.dark .gallery .dot-navigation button {
+	background-color: #555; /* Dark dots for the gallery navigation */
+  }
+  
+  body.dark .gallery .dot-navigation button.active {
+	background-color: #888; /* Highlight active dot in dark mode */
+  }
+  
+  body.dark .gallery .relative img {
+	transition: transform 0.3s ease, filter 0.3s ease; /* Transition for images */
+  }
+  
+
+  /* Dark mode for the navbar */
+  body.dark .main-navbar {
+	background-color: #333; /* Dark navbar background */
+
+  }
+
+  body.dark .main-navbar a {
+	color: #22C55E; /* Dark navbar background */
+
+  }
+  
+  /* Dark mode for the banner text */
+  body.dark .banner-desc h1,
+  body.dark .banner-desc p {
+	color: white; /* White text for the banner */
+  }
+  
+  
+  body.dark .overlay-section {
+	background-color: #1a1a1a; /* Dark background for sections */
+  }
+  
+
+/* Dark Mode Styles for GALLERY */
+
+  body.dark .section-header h1 {
+	color: white; /* White for section titles */
+  }
+  
+  body.dark .course-card {
+	background-color: #333; /* Dark background for course cards */
+	color: white; /* White text */
+  }
+  
+  body.dark .course-card a {
+	background-color: #007bff; /* Blue button for dark mode */
+  }
+  
+
+  /* Dark mode styles for COURSES */
+  body.dark .courses {
+	background-color: #1a1a1a; /* Dark background for the entire courses section */
+  }
+  
+  /* Dark mode for the section header */
+  body.dark .courses .section-header h1 {
+	color: white; /* White text for the main title */
+  }
+  
+  body.dark .courses .section-header p {
+	color: #ccc; /* Lighter text for the description */
+  }
+  
+  /* Dark mode for the category items (course cards) */
+  body.dark .courses .category-item {
+	background-color: #333; /* Dark background for course cards */
+	color: white; /* White text on course cards */
+	border: 1px solid #444; /* Subtle border to differentiate cards */
+  }
+  
+  /* Hover effect for dark mode */
+  body.dark .courses .category-item:hover {
+	background-color: #444; /* Darker background on hover */
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Slightly more intense shadow on hover */
+  }
+  
+  /* Text color inside course items */
+  body.dark .courses .category-item .category-desc h3 {
+	color: white; /* White text for the course titles */
+  }
+  
+  body.dark .courses .category-item .category-desc p {
+	color: #ccc; /* Lighter text color for course descriptions */
+  }
+  
+  /* Additional responsive design for dark mode */
+  body.dark .courses .category-item {
+	transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  
+  /* Dark mode for the LOCATION */
+  body.dark .location {
+	background-color: #1a1a1a; /* Dark background for the location section */
+	color: white; /* White text for better readability */
+  }
+  
+  /* Dark mode for the section header */
+  body.dark .location .section-header h1 {
+	color: white; /* White text for the section title */
+	
+  }
+
+
+  /* Dark mode styles */
+  
+  /* Dark mode for the footer */
+  body.dark .footer {
+	background-color: #1a1a1a07; /* Dark background for the footer */
+	color: white; /* White text in the footer */
+	
+  }
+  
+  
+  /* Copyright text styling */
+  body.dark .copy-rights p {
+	text-align: center;
+	font-size: 14px;
+	color: #bbbbbb; /* Lighter color for copyright text */
+  }
+  
+  body.dark .copy-rights p b {
+	font-weight: bold;
+	color: #ffffff; /* White color for bold text */
+  }
+  
+
 /*   === About Section Styling Starts ===   */
 section.about{
 	width: 100%;
@@ -794,6 +962,29 @@ section.footer{
 	.main-navbar .menu-btn.active span{
 		background-color: transparent;
 	}
+
+
+	/* Dark Mode: Menu Button */
+body.dark .main-navbar .menu-btn span,
+body.dark .main-navbar .menu-btn span::before,
+body.dark .main-navbar .menu-btn span::after {
+  background-color: white; /* Change the hamburger icon color to white */
+}
+
+/* Active state in Dark Mode */
+body.dark .main-navbar .menu-btn.active span {
+  background-color: transparent; /* Keep the center span transparent in active state */
+}
+
+body.dark .main-navbar .menu-btn.active span::before {
+  transform: rotate(45deg) translateY(0px);
+}
+
+body.dark .main-navbar .menu-btn.active span::after {
+  transform: rotate(-45deg) translateY(0px);
+}
+
+
 	.main-navbar .nav-list{
 		position: fixed;
 		width: 100%;
@@ -910,6 +1101,9 @@ section.footer{
 		width: 100%;
 		margin-bottom: 70px;
 	}
+
+	
+
 /* footer Section */
 .footer .footer-contents {
 	justify-content: center;
@@ -952,6 +1146,134 @@ section.footer{
 		flex-basis: 100%;
 	}
 }
+/* Mobile phone specific styles */
+@media screen and (max-width: 640px) {
+	/* Adjust banner size and ensure the content doesn't overflow */
+	.home .banner {
+	  height: auto; /* Allow the banner to adjust its height based on content */
+	  padding-bottom:50%; /* Space at the bottom of the banner */
+	}
+  
+	/* Ensure there's proper padding and spacing in the banner description */
+	.home .banner-desc {
+	  padding: 15px; /* Add padding around the description for better readability */
+	}
+  
+	/* Stack the buttons vertically and center them */
+	.home .buttons-container {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  gap: 15px; /* Add space between buttons */
+	}
+  
+	/* Adjust the button container margin for better alignment */
+	.home .btn-container {
+	  margin: 10px 0;
+	}
+  
+	/* Space between sections and reduce padding for mobile */
+	.overlay-section {
+	  margin-top: 10; /* Increased margin-top to avoid overlap with the banner */
+	  padding: 20px; /* Reduced padding for mobile */
+	}
+  
+	/* Adjust the grid to one column on mobile */
+	.overlay-section .grid {
+	  grid-template-columns: 1fr; /* Stack the content in a single column */
+	  gap: 16px; /* Add more gap between sections */
+	}
+  
+	/* Reduce padding within the section for a better fit */
+	.overlay-section .p-8 {
+	  padding: 5px; /* Less padding inside the section */
+	}
+  
+	/* Adjust the heading size for better readability */
+	.overlay-section h3 {
+	  font-size: 1.25rem; /* Smaller font size for mobile */
+	}
+  
+	/* Adjust paragraph font size */
+/* Adjust paragraph font size */
+.overlay-section p {
+    font-size: 0.875rem; /* Small text for better readability */
+  }
+
+   /* Ensure the buttons don't overlap with the description or slider */
+   .home .prev-button,
+   .home .next-button {
+	 z-index: 10; /* Lower z-index for buttons so they are behind the description */
+   }
+ }
+  
+	/* Overlay background adjustments */
+	.home .overlay {
+	  position: absolute; /* Make sure overlay stays in the background */
+	  inset: 0;
+	  background-color: rgba(0, 0, 0, 0.8); /* Adjust opacity for better visibility */
+	  z-index: 5; /* Ensure the overlay stays behind the text */
+	}
+  
+	/* Ensure banner description text stays above the slider */
+	.home .banner-desc {
+	  position: absolute;
+	  inset: 0;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: center;
+	  text-align: center;
+	  color: white;
+	  z-index: 10; /* Make sure text appears above the slider buttons */
+	  padding: 20px; /* Add padding to the text for spacing */
+	}
+  
+	/* Heading and paragraph adjustments */
+	.home .banner-desc .main-desc {
+	  font-size: 2.5rem; /* Adjust font size for better readability on mobile */
+	  margin-bottom: 1rem;
+	}
+  
+	.home .banner-desc .mini-desc {
+	  font-size: 1.25rem; /* Adjust font size for smaller devices */
+	  margin-bottom: 1rem;
+	  padding: 0 10px; /* Add some horizontal padding */
+	}
+  
+	/* Ensure buttons are spaced out and do not overlap */
+	.home .buttons-container {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  gap: 10px;
+	  z-index: 15; /* Ensure buttons are above the overlay */
+	  position: relative;
+	  margin-top: 1rem; /* Add some margin on top */
+	}
+  
+	.home .btn-container {
+	  margin: 8px 0;
+	}
+  
+	/* Adjust slider button positions to avoid overlap */
+	.home .prev-button,
+	.home .next-button {
+	  z-index: 5; /* Ensure buttons stay behind the text */
+	}
+  
+	.home .prev-button {
+	  left: 10px;
+	  top: 50%;
+	  transform: translateY(-50%);
+	}
+  
+	.home .next-button {
+	  right: 10px;
+	  top: 50%;
+	  transform: translateY(-50%);
+	}
+
 
 @media(max-width: 568px){
 	/* Courses Section */
