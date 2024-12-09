@@ -105,20 +105,21 @@ const Home = () => {
     </div>
 
     <button
-      onClick={prevImage}
-      className="absolute top-1/2 left-3 transform -translate-y-1/2 px-6 py-3 bg-green-700 text-white rounded-full focus:outline-none hover:bg-gray-600"
-      style={{ zIndex: 30 }}
-    >
-      &#10094;
-    </button>
+  onClick={prevImage}
+  className="absolute top-1/2 left-3 transform -translate-y-1/2 px-6 py-3 bg-green-700 text-white rounded-full focus:outline-none hover:bg-gray-600 hidden md:block"
+  style={{ zIndex: 30 }}
+>
+  &#10094;
+</button>
 
-    <button
-      onClick={nextImage}
-      className="absolute top-1/2 right-3 transform -translate-y-1/2 px-6 py-3 bg-green-700 text-white rounded-full focus:outline-none hover:bg-gray-600"
-      style={{ zIndex: 30 }}
-    >
-      &#10095;
-    </button>
+<button
+  onClick={nextImage}
+  className="absolute top-1/2 right-3 transform -translate-y-1/2 px-6 py-3 bg-green-700 text-white rounded-full focus:outline-none hover:bg-gray-600 hidden md:block"
+  style={{ zIndex: 30 }}
+>
+  &#10095;
+</button>
+
   </div>
 
       <section className="overlay-section relative py-16 bg-gray-100">
