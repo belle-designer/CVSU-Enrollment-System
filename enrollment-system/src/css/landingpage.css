@@ -402,8 +402,16 @@ section.partners{
 }
 /*   === Partners Section Styling Ends ===   */
 
+/* Dark mode styles for HOME */
+body.dark {
+	background-color: #121212; /* Dark background */
+	color: white; /* White text */
+  }
+  body.dark .home {
+	background-color: #1a1a1a; /* Dark background for the gallery */
+  }
 
-/* Dark mode styles for About */
+/* Dark mode styles for ABOUT */
 body.dark {
 	background-color: #121212; /* Dark background */
 	color: white; /* White text */
