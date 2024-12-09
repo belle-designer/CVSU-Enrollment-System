@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 
 const Gallery = () => {
   const images = [
-    'src/assets/images/img1.jpg', 
-    'src/assets/images/img2.jpg', 
-    'src/assets/images/img3.jpg', 
-    'src/assets/images/img4.jpg', 
-    'src/assets/images/img5.jpg', 
-    'src/assets/images/img6.jpg', 
-    'src/assets/images/img7.jpg',
-    'src/assets/images/img8.jpg',
-    'src/assets/images/img9.jpg',
-    'src/assets/images/img10.jpg',
+    '/img1.jpg', 
+    '/img2.jpg', 
+    '/img3.jpg', 
+    '/img4.jpg', 
+    '/img5.jpg', 
+    '/img6.jpg', 
+    '/img7.jpg',
+    '/img8.jpg',
+    '/img9.jpg',
+    '/img10.jpg',
   ];
 
   const descriptions = [
