@@ -65,7 +65,7 @@ const Home = () => {
         </ul>
         <div className="buttons-container flex items-center space-x-4">
           <button onClick={toggleDarkMode} className="dark-mode-toggle">
-            <img src={isDarkMode ? sunIcon : moonIcon} alt="Toggle Dark Mode" className="w-6 h-6" />
+            <img src={isDarkMode ? sunIcon : moonIcon} alt="Toggle Dark Mode" />
           </button>
         </div>
         <div className="menu-btn" onClick={toggleMenu}>
