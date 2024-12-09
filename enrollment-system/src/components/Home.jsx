@@ -51,74 +51,75 @@ const Home = () => {
 
   return (
     <section className="home" id="home">
-      <nav className="main-navbar flex justify-between items-center px-6 py-4">
-        <a href="/" className="logo" onClick={handleLogoClick}>
-          <img src={logo} alt="CVSU Logo" className="w-24" />
-        </a>
-        <ul className={`nav-list ${isMenuOpen ? 'active' : ''} flex space-x-4 md:flex-row flex-col md:space-x-8`}>
-          <li><a href="#home" onClick={closeMenu}>Home</a></li>
-          <li><a href="#about" onClick={closeMenu}>About</a></li>
-          <li><a href="#gallery" onClick={closeMenu}>Gallery</a></li>
-          <li><a href="#courses" onClick={closeMenu}>Courses</a></li>
-          <li><a href="#location" onClick={closeMenu}>Location</a></li>
-          <li><a href="#footer" onClick={closeMenu}>Contact</a></li>
-        </ul>
-        <div className="buttons-container flex items-center space-x-4">
-          <button onClick={toggleDarkMode} className="dark-mode-toggle">
-            <img src={isDarkMode ? sunIcon : moonIcon} alt="Toggle Dark Mode" />
+  <nav className="main-navbar flex justify-between items-center px-6 py-4">
+    <a href="/" className="logo" onClick={handleLogoClick}>
+      <img src={logo} alt="CVSU Logo" />
+    </a>
+    <ul className={`nav-list ${isMenuOpen ? 'active' : ''}`}>
+      <li><a href="#home" onClick={closeMenu}>Home</a></li>
+      <li><a href="#about" onClick={closeMenu}>About</a></li>
+      <li><a href="#gallery" onClick={closeMenu}>Gallery</a></li>
+      <li><a href="#courses" onClick={closeMenu}>Courses</a></li>
+      <li><a href="#location" onClick={closeMenu}>Location</a></li>
+      <li><a href="#footer" onClick={closeMenu}>Contact</a></li>
+    </ul>
+    <div className="buttons-container flex items-center space-x-4">
+      <button onClick={toggleDarkMode} className="dark-mode-toggle">
+        <img src={isDarkMode ? sunIcon : moonIcon} alt="Toggle Dark Mode" />
+      </button>
+    </div>
+    <div className="menu-btn" onClick={toggleMenu}>
+      <span></span>
+    </div>
+  </nav>
+
+  <div
+    className="home banner relative h-screen bg-cover bg-center"
+    style={{
+      backgroundImage: `url(${images[currentImageIndex]})`,
+      transition: 'background-image 1s ease-in-out',
+    }}
+  >
+    <div className="overlay absolute inset-0 bg-black opacity-80"></div>
+    <div className="banner-desc absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4 sm:px-6 md:px-12">
+      <h1 className="main-desc text-4xl sm:text-5xl font-extrabold mb-4 leading-tight sm:leading-snug">
+        Cavite State University - Bacoor Campus
+      </h1>
+      <p className="mini-desc text-lg sm:text-xl mb-4 px-6 sm:px-12">
+  Welcome to the website of the Department of Computer Studies;
+  <span className="block mt-2">featuring programs in Computer Science and Information Technology.</span>
+</p>
+
+      <div className="flex space-x-4 flex-wrap justify-center">
+        <Link to="/Login" className="btn-container">
+          <button className="login-btn py-3 px-8 text-lg bg-orange-500 text-white rounded-full hover:bg-green-600 transition duration-300">
+            Login
           </button>
-        </div>
-        <div className="menu-btn" onClick={toggleMenu}>
-          <span className="block w-6 h-0.5 bg-black"></span>
-          <span className="block w-6 h-0.5 bg-black my-1"></span>
-          <span className="block w-6 h-0.5 bg-black"></span>
-        </div>
-      </nav>
-
-      <div
-        className="home banner relative h-screen bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${images[currentImageIndex]})`,
-          transition: 'background-image 1s ease-in-out',
-        }}
-      >
-        <div className="overlay absolute inset-0 bg-black opacity-80"></div>
-        <div className="banner-desc absolute inset-0 flex flex-col justify-center items-center text-center text-white">
-          <h1 className="main-desc text-4xl sm:text-5xl font-extrabold mb-4">Cavite State University - Bacoor Campus</h1>
-          <p className="mini-desc text-lg sm:text-xl mb-4 px-6 sm:px-12">
-            Welcome to the website of the Department of Computer Studies; featuring programs in Computer Science and Information Technology.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-x-4 sm:space-y-0">
-            <Link to="/Login" className="btn-container">
-              <button className="login-btn py-3 px-8 text-lg bg-orange-500 text-white rounded-full hover:bg-green-600 transition duration-300">
-                Login
-              </button>
-            </Link>
-            <Link to="/Application" className="btn-container">
-              <button className="enroll-now-btn py-3 px-8 text-lg bg-green-500 text-white rounded-full hover:bg-yellow-600 transition duration-300">
-                Apply Now
-              </button>
-            </Link>
-          </div>
-        </div>
-
-        <button
-          onClick={prevImage}
-          className="absolute top-1/2 left-3 transform -translate-y-1/2 px-6 py-3 bg-green-700 text-white rounded-full focus:outline-none hover:bg-gray-600"
-          style={{ zIndex: 30 }}
-        >
-          &#10094;
-        </button>
-
-        <button
-          onClick={nextImage}
-          className="absolute top-1/2 right-3 transform -translate-y-1/2 px-6 py-3 bg-green-700 text-white rounded-full focus:outline-none hover:bg-gray-600"
-          style={{ zIndex: 30 }}
-        >
-          &#10095;
-        </button>
+        </Link>
+        <Link to="/Application" className="btn-container">
+          <button className="enroll-now-btn py-3 px-8 text-lg bg-green-500 text-white rounded-full hover:bg-yellow-600 transition duration-300">
+            Apply Now
+          </button>
+        </Link>
       </div>
+    </div>
+
+    <button
+      onClick={prevImage}
+      className="absolute top-1/2 left-3 transform -translate-y-1/2 px-6 py-3 bg-green-700 text-white rounded-full focus:outline-none hover:bg-gray-600"
+      style={{ zIndex: 30 }}
+    >
+      &#10094;
+    </button>
+
+    <button
+      onClick={nextImage}
+      className="absolute top-1/2 right-3 transform -translate-y-1/2 px-6 py-3 bg-green-700 text-white rounded-full focus:outline-none hover:bg-gray-600"
+      style={{ zIndex: 30 }}
+    >
+      &#10095;
+    </button>
+  </div>
 
       <section className="overlay-section relative py-16 bg-gray-100">
         <div className="absolute inset-0 flex justify-center items-center z-10 mt-[-80px]">
