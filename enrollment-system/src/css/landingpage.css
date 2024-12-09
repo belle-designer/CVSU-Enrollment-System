@@ -459,8 +459,10 @@ body.dark {
   body.dark .gallery .relative img {
 	transition: transform 0.3s ease, filter 0.3s ease; /* Transition for images */
   }
+  body.dark .gallery p {
+	color:rgba(255, 255, 255, 0.692); /* Slightly dim images for dark mode */
   
-
+  }
   /* Dark mode for the navbar */
   body.dark .main-navbar {
 	background-color: #333; /* Dark navbar background */
