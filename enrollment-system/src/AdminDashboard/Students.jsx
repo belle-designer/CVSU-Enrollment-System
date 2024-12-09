@@ -143,7 +143,7 @@ const Students = () => {
 
           {/* Search Button */}
           <button
-            className="px-10 py-2 bg-green-700 text-white hover:bg-green-600"
+            className="px-10 py-2 bg-green-700 text-white hover:bg-green-600 rounded-lg"
             onClick={handleSearch}
           >
             Search
