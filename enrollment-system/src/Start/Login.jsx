@@ -8,6 +8,8 @@ import img1 from '../assets/images/01.jpg';
 import img2 from '../assets/images/02.jpg';
 import img3 from '../assets/images/03.jpg';
 
+import Logo from '../assets/images/cvsu-logo.png';
+
 const Login = ({ setUser }) => {
   const [isRegistering, setIsRegistering] = useState(false);
   const [emailOrUserID, setEmailOrUserID] = useState('');
@@ -223,8 +225,17 @@ const Login = ({ setUser }) => {
         </div>
 
         {}
+        
         <div className="w-1/2 p-2 flex justify-center items-center">
-          <div className="w-full max-w-md space-y-4">
+  <div className="w-full max-w-md space-y-4">
+    {/* Logo Image */}
+    <div className="flex justify-center mb-4">
+      <a href="/">
+        <img src={Logo} alt="Logo" />
+      </a>
+    </div>
+
+            
             <h2 className="text-2xl font-semibold text-center mb-6">
               {isRegistering ? 'SIGN UP' : 'LOG IN'}
             </h2>
