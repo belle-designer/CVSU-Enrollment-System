@@ -83,8 +83,10 @@ const Home = () => {
         <div className="overlay absolute inset-0 bg-black opacity-80"></div>
         <div className="banner-desc absolute inset-0 flex flex-col justify-center items-center text-center text-white">
           <h1 className="main-desc text-5xl font-extrabold mb-4">Cavite State University - Bacoor Campus</h1>
-          <p className="mini-desc text-xl mb-4">Welcome to the website of the Department of Computer Studies; </p>
-          <p className="mini-desc text-xl mb-4">  featuring programs in Computer Science and Information Technology. </p>
+          <p className="mini-desc text-xl mb-4">Welcome to the website of the Department of Computer Studies; 
+          featuring programs in Computer Science and Information Technology.
+          </p>
+
           
 
           <div className="flex space-x-4">
