@@ -402,20 +402,20 @@ section.partners{
 }
 /*   === Partners Section Styling Ends ===   */
 
+
+
 /* Dark mode styles for HOME */
 body.dark {
 	background-color: #121212; /* Dark background */
-	color: white; /* White text */
+
   }
+  
   body.dark .home {
 	background-color: #1a1a1a; /* Dark background for the gallery */
   }
 
 /* Dark mode styles for ABOUT */
-body.dark {
-	background-color: #121212; /* Dark background */
-	color: white; /* White text */
-  }
+
   body.dark .about {
 	background-color: #1a1a1a; /* Dark background for the gallery */
   }
@@ -426,7 +426,6 @@ body.dark {
   body.dark .about p {
 	color:rgba(255, 255, 255, 0.692); /* Slightly dim images for dark mode */
   }
-
 
   
   /* Dark mode for the GALLERY */
@@ -446,7 +445,6 @@ body.dark {
 	filter: brightness(0.8); /* Slightly dim images for dark mode */
   }
   
-
 
   body.dark .gallery .dot-navigation button {
 	background-color: #555; /* Dark dots for the gallery navigation */
