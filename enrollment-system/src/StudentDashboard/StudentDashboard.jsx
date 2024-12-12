@@ -20,7 +20,9 @@ const StudentDashboard = () => {
 
   const [showPopup, setShowPopup] = useState(false);
 
-
+ // State for sidebar collapse
+ const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  
   
   const [isEditing, setIsEditing] = useState(false);
   const [profileInfo, setProfileInfo] = useState({
@@ -121,16 +123,42 @@ const handleInputChange = (event) => {
     setIsModalOpen(false); // Close the modal
   };
   
+  const handleEnrollment = (event) => {
+    event.preventDefault(); // Prevent form submission
+  
+    // Check if any grade is failing (below 75)
+    const grades = document.getElementById("grades").value.split(",").map(grade => parseFloat(grade.trim()));
+    const failingGrade = grades.find(grade => grade < 75);
+    
+    if (failingGrade) {
+      document.getElementById("gradeError").textContent = "You have failing grades. You cannot enroll until your grades are improved.";
+      return;
+    } else {
+      document.getElementById("gradeError").textContent = ""; // Clear error message
+    }
+  
+    // Check if proof of payment is uploaded
+    const proofOfPayment = document.getElementById("proofOfPayment").files.length;
+    if (proofOfPayment === 0) {
+      alert("Please upload proof of payment for your society fee.");
+      return;
+    }
+  
+    // If all validations pass, proceed with the enrollment
+    alert("You are now enrolled.");
+  };
   
   
 
   return (
     <div id="wrapper">
       {/* Sidebar */}
-      <section id="sidebar">
-        <a href="#" className="brand">
-        <span class="ml-[40px]">Hi, Mary Ann!</span>
-
+      
+    {/* Sidebar */}
+    <section id="sidebar" className={sidebarCollapsed ? 'hide' : ''}>
+    <a href="#" className="brand">
+        <img src="/logo.png" alt="CvSU-Bacoor" />
+        CvSU-Bacoor
         </a>
         <ul className="side-menu">
           <li className="divider" data-text="main">Main</li>
@@ -165,11 +193,17 @@ const handleInputChange = (event) => {
         </ul>
       </section>
 
-      {/* Navbar */}
-      <section id="content">
+ {/* Content Section */}
+ <section id="content" className='w-full'>
         <nav>
-          <i className="bx bx-menu toggle-sidebar"></i>
-          <form action="#"> </form>
+          <i className="bx bx-menu toggle-sidebar" onClick={() => setSidebarCollapsed(!sidebarCollapsed)}></i>
+          <form>
+            <div className="form-group">
+              <input type="text" placeholder="Search..." />
+              <i className="bx bx-search icon"></i>
+            </div>
+          </form>
+
           <a href="#" className="nav-link">
             <i className="bx bxs-bell icon"></i>
             <span className="badge">5</span>
@@ -400,13 +434,105 @@ const handleInputChange = (event) => {
             </>
           )}
           {/* Enrollment Section */}
-          {activeSection === "enrollment" && (
-            <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg mb-10">
-              <h1 className="text-3xl font-bold text-center text-green-700 mb-4">Enrollment Section</h1>
-              <p className="text-center text-gray-600 mb-8">This section will allow students to enroll in courses.</p>
-              {/* Enrollment form or details can be added here */}
-            </div>
-          )}
+{/* Enrollment Section */}
+{activeSection === "enrollment" && (
+  <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg mb-10">
+    <h1 className="text-3xl font-bold text-center text-green-700 mb-4">Enrollment Section</h1>
+    <p className="text-center text-gray-600 mb-8">
+      This section will allow students to enroll in courses. Please ensure you meet the requirements below.
+    </p>
+
+    {/* Enrollment Form */}
+    <form className="space-y-6" onSubmit={handleEnrollment}>
+      <div>
+        <label htmlFor="studentName" className="block text-sm font-semibold text-gray-700">Student Name</label>
+        <input
+          type="text"
+          id="studentName"
+          placeholder="Enter your full name"
+          className="mt-2 p-3 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="program" className="block text-sm font-semibold text-gray-700">Program</label>
+        <select
+          id="program"
+          className="mt-2 p-3 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+          required
+        >
+          <option value="">Select your program</option>
+          <option value="bscs">BSCS (Bachelor of Science in Computer Science)</option>
+          <option value="bsit">BSIT (Bachelor of Science in Information Technology)</option>
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="semester" className="block text-sm font-semibold text-gray-700">Semester</label>
+        <select
+          id="semester"
+          className="mt-2 p-3 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+          required
+        >
+          <option value="">Select your semester</option>
+          <option value="first">1st Semester</option>
+          <option value="second">2nd Semester</option>
+          <option value="summer">Summer</option>
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="grades" className="block text-sm font-semibold text-gray-700">Grades</label>
+        <input
+          type="text"
+          id="grades"
+          placeholder="Enter your grades (e.g., 80, 90, 70)"
+          className="mt-2 p-3 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+          required
+        />
+        <p className="text-sm text-red-500 mt-2" id="gradeError"></p> {/* Error message for failing grades */}
+      </div>
+
+      <div>
+        <label htmlFor="proofOfPayment" className="block text-sm font-semibold text-gray-700">Proof of Payment</label>
+        <input
+          type="file"
+          id="proofOfPayment"
+          accept="image/*, .pdf"
+          className="mt-2 p-3 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+          required
+        />
+        <p className="text-sm text-gray-500 mt-2">Please upload the proof of payment for your society fee.</p>
+      </div>
+
+      <div>
+        <label htmlFor="courses" className="block text-sm font-semibold text-gray-700">Courses</label>
+        <select
+          id="courses"
+          multiple
+          className="mt-2 p-3 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+          required
+        >
+          <option value="course1">Course 1: Computer Science Fundamentals</option>
+          <option value="course2">Course 2: Data Structures</option>
+          <option value="course3">Course 3: Algorithms</option>
+          <option value="course4">Course 4: Database Systems</option>
+          <option value="course5">Course 5: Web Development</option>
+        </select>
+      </div>
+
+      <div className="flex justify-center">
+        <button
+          type="submit"
+          className="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+        >
+          Enroll Now
+        </button>
+      </div>
+    </form>
+  </div>
+)}
         </main>
       </section>
     </div>

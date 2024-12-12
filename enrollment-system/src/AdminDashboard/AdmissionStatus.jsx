@@ -16,6 +16,11 @@ const AdmissionStatus = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredStudents, setFilteredStudents] = useState(allStudents);
   
+  // Modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalType, setModalType] = useState(''); // 'edit' or 'delete'
+  const [selectedStudent, setSelectedStudent] = useState(null);
+
   // Constants for pagination
   const rowsPerPage = 10;
 
@@ -52,6 +57,34 @@ const AdmissionStatus = () => {
   
   const handleNext = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  };
+
+  // Open the modal for editing or deleting
+  const openModal = (student, type) => {
+    setSelectedStudent(student);
+    setModalType(type);
+    setIsModalOpen(true);
+  };
+
+  // Close the modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedStudent(null);
+    setModalType('');
+  };
+
+  // Handle delete confirmation
+  const handleDelete = () => {
+    // Logic to delete the student
+    alert(`Student with ID ${selectedStudent.id} deleted.`);
+    closeModal();
+  };
+
+  // Handle editing the student details
+  const handleEdit = () => {
+    // Logic to save the edited student details
+    alert(`Student with ID ${selectedStudent.id} edited.`);
+    closeModal();
   };
 
   return (
@@ -114,7 +147,7 @@ const AdmissionStatus = () => {
                 <th className="px-4 py-2 text-center">Program</th>
                 <th className="px-4 py-2 text-center">Exam Result</th>
                 <th className="px-4 py-2 text-center">Admission Status</th>
-                <th className="px-4 py-2 text-center"></th>
+                <th className="px-4 py-2 text-center">Actions</th>
               </tr>
             </thead>
             <tbody className="text-sm">
@@ -134,15 +167,16 @@ const AdmissionStatus = () => {
                   <td className="px-4 py-2 text-center">
                     {/* Actions: Edit and Delete buttons */}
                     <div className="flex justify-center gap-2">
-                      <button className="text-blue-500 hover:text-blue-700">
+                      <button className="text-blue-500 hover:text-blue-700" onClick={() => openModal(student, 'edit')}>
                         <svg xmlns="http://www.w3.org/2000/svg" height="18px" width="18px" fill="#5f6368" viewBox="0 -960 960 960">
-                          <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h357l-80 80H200v560h560v-278l80-80v358q0 33-23.5 56.5T760-120H200Zm280-360ZM360-360v-170l367-367q12-12 27-18t30-6q16 0 30.5 6t26.5 18l56 57q11 12 17 26.5t6 29.5q0 15-5.5 29.5T897-728L530-360H360Zm481-424-56-56 56 56ZM440-440h56l232-232-28-28-29-28-231 231v57Zm260-260-29-28 29 28 28 28-28-28Z"/>
+                          <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h357l-80 80H200v560h560v-278l80-80v358q0 33-23.5 56.5T760-120H200Zm280-360ZM120-360v-170l367-367q12-12 27-18t30-6q18 0 33 6t27 18q12 12 18 27t6 30q0 18-6 33t-18 27L654 585V760q0 18-12.5 30.5T612-360H120Z" />
                         </svg>
                       </button>
-
-                      <button>
-                      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#Ff0000"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
-                        </button>
+                      <button className="text-red-500 hover:text-red-700" onClick={() => openModal(student, 'delete')}>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="18px" width="18px" fill="#5f6368" viewBox="0 -960 960 960">
+                          <path d="M720-120q-33 0-56.5-23.5T640-200v-560q0-33 23.5-56.5T720-840h357l-80 80H720v560h560v-278l80-80v358q0 33-23.5 56.5T880-120H720Zm280-360ZM360-360v-170l367-367q12-12 27-18t30-6q18 0 33 6t27 18q12 12 18 27t6 30q0 18-6 33t-18 27L654 585V760q0 18-12.5 30.5T612-360H360Z" />
+                        </svg>
+                      </button>
                     </div>
                   </td>
                 </tr>
@@ -151,41 +185,48 @@ const AdmissionStatus = () => {
           </table>
         </div>
 
-        {/* Bottom Container (Pagination) */}
-        <div className="mb-6 p-4 rounded-md">
-          {/* Pagination Controls */}
-          <div className="flex items-center justify-end space-x-2">
-            {/* Previous Button */}
-            <button
-              onClick={handlePrev}
-              className="px-4 py-2 rounded-md hover:text-green-700"
-              disabled={currentPage === 1}
-            >
-              Previous
-            </button>
-
-            {/* Page Number Buttons */}
-            {[...Array(totalPages)].map((_, index) => (
-              <button
-                key={index}
-                onClick={() => handlePageChange(index + 1)}
-                className={`px-4 py-2 border rounded-md ${currentPage === index + 1 ? 'bg-green-700 text-white' : 'bg-white text-gray-700'}`}
-              >
-                {index + 1}
-              </button>
-            ))}
-
-            {/* Next Button */}
-            <button
-              onClick={handleNext}
-              className="px-4 py-2 rounded-md hover:text-green-700"
-              disabled={currentPage === totalPages}
-            >
-              Next
-            </button>
-          </div>
+        {/* Pagination */}
+        <div className="flex justify-between p-6">
+          <button onClick={handlePrev} className="bg-blue-500 text-white p-2 rounded-md disabled:opacity-50" disabled={currentPage === 1}>
+            Previous
+          </button>
+          <span>Page {currentPage} of {totalPages}</span>
+          <button onClick={handleNext} className="bg-blue-500 text-white p-2 rounded-md disabled:opacity-50" disabled={currentPage === totalPages}>
+            Next
+          </button>
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && selectedStudent && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+            {modalType === 'edit' ? (
+              <>
+                <h3 className="text-xl font-semibold mb-4">Edit Student</h3>
+                <p><strong>Student No:</strong> {selectedStudent.studentNo}</p>
+                <p><strong>Name:</strong> {selectedStudent.firstName} {selectedStudent.middleName} {selectedStudent.lastName}</p>
+                {/* Edit form fields for student */}
+                <input type="text" defaultValue={selectedStudent.firstName} className="border p-2 rounded mt-2" />
+                {/* Add other fields here */}
+                <div className="flex justify-end mt-4">
+                  <button onClick={handleEdit} className="px-4 py-2 bg-blue-500 text-white rounded-md">Save</button>
+                  <button onClick={closeModal} className="px-4 py-2 bg-gray-300 rounded-md ml-2">Cancel</button>
+                </div>
+              </>
+            ) : (
+              <>
+                <h3 className="text-xl font-semibold mb-4">Delete Student</h3>
+                <p>Are you sure you want to delete student {selectedStudent.firstName}?</p>
+                <div className="flex justify-end mt-4">
+                  <button onClick={handleDelete} className="px-4 py-2 bg-red-500 text-white rounded-md">Delete</button>
+                  <button onClick={closeModal} className="px-4 py-2 bg-gray-300 rounded-md ml-2">Cancel</button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </main>
   );
 };
