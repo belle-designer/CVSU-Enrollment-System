@@ -33,7 +33,7 @@ const Home = () => {
         </ul>
         
         <div className="buttons-container">
-          <Link to="/StudentDashboard" className="btn-container" onClick={closeMenu}>
+          <Link to="/Login" className="btn-container" onClick={closeMenu}>
             <button className="btn secondary-btn">Login</button>
           </Link>
           <Link to="/Application" className="btn-container" onClick={closeMenu}>
