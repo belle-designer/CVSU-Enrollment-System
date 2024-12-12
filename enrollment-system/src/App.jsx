@@ -8,6 +8,8 @@ import Courses from './components/Courses';
 import Location from './components/Location';
 import Footer from './components/Footer';
 import Login from './Start/Login';
+import Fpassword from './Start/Fpassword';
+import ResetPass from './Start/ResetPass';
 
 import StudentDashboard from './StudentDashboard/StudentDashboard.jsx';
 import AdminDashboard from './AdminDashboard/AdminDashboard.jsx';
@@ -72,6 +74,12 @@ function App() {
               localStorage.setItem('user', JSON.stringify(user));
             }} />}
           />
+
+          {/* Forgot Password Route */}
+          <Route path="/forgot-password" element={<Fpassword />} />
+
+          {/* Reset Password Route */}
+          <Route path="/resetpass" element={<ResetPass />} /> 
 
           {/* Role-based Dashboard Redirection */}
           <Route
