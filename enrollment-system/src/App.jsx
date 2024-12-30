@@ -111,7 +111,7 @@ function App() {
             element={user && user.role === 'Admin' ? (
               <AdminDashboard logout={handleLogout} />
             ) : (
-              <Navigate to="/" />
+              <Navigate to="/Login" />
             )}
           />
 

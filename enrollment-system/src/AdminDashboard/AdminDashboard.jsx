@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect  } from 'react';
 import './AdminDashboard.css'; // Assuming the CSS is in this file
 import Dashboard from './Dashboard';
 import Students from './Students';
@@ -17,10 +17,15 @@ import Checklists from './Checklists';
 import Report from './Summary.jsx';
 import Summary from './Summary.jsx';
 
+import Login from '../Start/Login'
 
-const AdminDashboard = () => {
+
+const AdminDashboard = ({ logout }) => {
   // State for sidebar collapse
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
   
   // State for active content section
   const [activeSection, setActiveSection] = useState('dashboard');
@@ -50,8 +55,32 @@ const AdminDashboard = () => {
       }
     }
   };
-  
-  
+
+  const toggleProfileDropdown = (event) => {
+    event.stopPropagation(); // Prevent click from closing the dropdown immediately
+    setIsDropdownOpen((prevState) => !prevState);
+  };
+
+  // Handle logout through the passed logout function
+  const handleLogout = () => {
+    // Call the passed logout function to handle clearing session data
+    logout();
+  };
+
+  // Close dropdown if clicked outside of it
+  useEffect(() => {
+    const closeDropdownOnClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('click', closeDropdownOnClickOutside);
+    return () => {
+      document.removeEventListener('click', closeDropdownOnClickOutside);
+    };
+  }, []);
+ 
   return (
     <div className="main-layout" >
       {/* Sidebar */}
@@ -167,13 +196,38 @@ const AdminDashboard = () => {
             <span className="badge">5</span>
           </a>
           <span className="divider"></span>
-          <div className="profile">
-            <img src="/profile.jpg" alt="Profile" />
-            <ul className="profile-link">
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">Settings</a></li>
-              <li><a href="#">Logout</a></li>
-            </ul>
+          <div className="relative">
+      <img
+        src="/profile.jpg"
+        alt="Profile"
+        onClick={toggleProfileDropdown}
+        className="w-10 h-10 rounded-full cursor-pointer"
+      />
+      {isDropdownOpen && (
+        <ul
+          ref={dropdownRef}
+          className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg border border-gray-200"
+        >
+          <li>
+            <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+              Profile
+            </a>
+          </li>
+          <li>
+            <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+              Settings
+            </a>
+          </li>
+          <li>
+            <button
+              onClick={handleLogout}
+              className="w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
+            >
+              Logout
+            </button>
+          </li>
+        </ul>
+      )}
           </div>
         </nav>
 

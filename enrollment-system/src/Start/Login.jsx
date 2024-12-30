@@ -127,7 +127,7 @@ const Login = ({ setUser }) => {
     }
   };*/
 
-  const handleFormSubmit = async (e) => {
+ const handleFormSubmit = async (e) => {
     e.preventDefault();
   
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -195,7 +195,7 @@ const Login = ({ setUser }) => {
         setPopupMessage('Invalid login credentials.');
       }
     }
-  };  
+  };
  
   return (
     <div
